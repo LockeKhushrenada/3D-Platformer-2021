@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int score = 0;
+    public int currentCount;
+    public GameObject[] getCount;
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,10 +28,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        getCount = GameObject.FindGameObjectsWithTag("pickup");
+        currentCount = GameManager.instance.getCount.Length;
     }
-    public void AddScore(int amount)
+    public void pickupsLeft(int amount)
     {
-        score += amount;
+        currentCount -= amount;
     }
 }
